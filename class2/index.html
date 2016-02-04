@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fun with forms</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<form target="_blank">
+			<input type="number" name="inputNum">
+			<input type="button" value="OK" onclick="adding(inputNum.value)">
+			<input type="reset">
+		</form>
+		<script type="text/javascript">
+			function adding(myInput) {
+				// myWindow = window.open("http://cs.wheatonma.edu/mgousie", "width=300", "height=200");
+				// if (input > 0) {
+				// 	document.write("Greater than 0");
+				// 	// console.log("Greater than 0");
+				// }
+				// else if (input < 0) {
+				// 	document.write("Less than 0");
+				// 	// console.log("Less than 0");
+				// }
+				// else {
+				// 	document.write("Equal to 0");
+				// 	// console.log("Equal to 0");
+				// }
+
+				// date
+				// var date = new Date();
+				// var month = date.getMonth() + 1;
+				// var day = date.getDay();
+				// document.write("Today is " + month + "/" + day);
+
+				// input form
+				// var myInputNum;
+				// myInputNum = myInput * 1 + 10; // multiply by 1 to make it recognize input as a number
+				// document.write("input + 10 = " + myInputNum);
+
+				var names = new Array(5);
+				names[0] = "Tyler";
+				names[1] = "Kim";
+				names[2] = "Brittany";
+				names[3] = "Dan";
+				names[4] = "Alek";
+
+				var adj = new Array(10);
+				adj[0] = "tall";
+				adj[1] = "short";
+				adj[2] = "loud";
+				adj[3] = "quiet";
+				adj[4] = "fast";
+				adj[5] = "slow";
+				adj[6] = "big";
+				adj[7] = "small";
+				adj[8] = "funny";
+				adj[9] = "boring";
+
+				var randomName = names[Math.floor(Math.random() * names.length)];
+				var randomAdj = adj[Math.floor(Math.random() * adj.length)];
+				var chosenName = names[randomName];
+				var chosenAdj = adj[randomAdj];
+
+				document.write(randomAdj + " " + randomName);
+			}
+		</script>
+	</body>
+</html>
