@@ -1,0 +1,19 @@
+body {
+	background-color: #ffe6cc;
+}
+
+#banner {
+	text-align: center;
+}
+
+#illusion1Canvas {
+	height: inherit;
+	width: inherit;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000;
+}
+
+#profilePic {
+	height: 10em;
+}

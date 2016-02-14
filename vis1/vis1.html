@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Illusions</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="./css/foundation.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<script src="js/vis1.js"></script>
+	</head>
+
+	<body>
+		<div class="row" id="banner">
+			<div class="small-12 columns text-center">
+				<img src="imgs/profile.jpg" id="profilePic">
+			</div>
+			<div class="small-12 small-centered columns">
+				<h4>Tyler Kickham</h4>
+			</div>
+		</div>
+
+		<div class="small-9 small-centered columns">
+			<ul class="tabs text-center" data-tabs id="illusionTabs">
+				<li class="tabs-title is-active"><a href="#illusion1" aria-selected="true">Scintillating Grid</a></li>
+				<li class="tabs-title"><a href="#illusion2" aria-selected="false">SAM</a></li>
+			</ul>
+
+			<div class="tabs-content" data-tabs-content="illusionTabs">
+				<div class="tabs-panel is-active" id="illusion1">
+					<div class="small-12 small-centered columns">
+						<canvas id="illusion1Canvas"></canvas>
+					</div>
+					<div class="small-12 small-centered columns">
+						<form>
+							<input type="button" value="Horizontal" onclick="coverTop()">
+							<input type="button" value="Vertical" onclick="coverRight()">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script src="js/vendor/jquery.min.js"></script>
+		<script src="js/foundation.min.js"></script>
+		<script>
+			$(document).foundation();
+		</script>
+	</body>
+</html>
