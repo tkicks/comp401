@@ -31,12 +31,12 @@ function flashShapes(ctx, evens, width, height) {
 	var x, y;
 	if (evens) {
 		if (!coverTop) {
-			x = 60;
+			x = 70;
 			y = 30;
 			drawSamDots(ctx, x, y);	// top left
 		}
 		if (!coverSide) {
-			x = width - 60;
+			x = width - 70;
 			y = height - 30;
 			drawSamDots(ctx, x, y);	// bottom right[2]
 		}
@@ -44,11 +44,11 @@ function flashShapes(ctx, evens, width, height) {
 	}
 	else {
 		if (!coverTop && !coverSide) {
-			x = width - 60;
+			x = width - 70;
 			y = 30;
 			drawSamDots(ctx, x, y);	// top right
 		}
-		x = 60;
+		x = 70;
 		y = height - 30;
 		drawSamDots(ctx, x, y);	// bottom left
 		return evens = true;
