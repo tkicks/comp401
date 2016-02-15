@@ -7,6 +7,6 @@ $(document).ready(function() {
 		SAMTab();
 	})
 	$('#illusion2Tab').click(function() {
-		gridTab();
+		tTab();
 	})
 })

@@ -25,12 +25,22 @@
 			<ul class="tabs text-center" data-tabs id="projectTabs">
 				<li class="tabs-title is-active" id="homeTab"><a href="#home" aria-selected="true">Home</a></li>
 				<li class="tabs-title" id="illusion1Tab"><a href="#illusion1" aria-selected="false">SAM</a></li>
-				<li class="tabs-title" id="illusion2Tab"><a href="#illusion2" aria-selected="false">Scintillating Grid</a></li>
+				<li class="tabs-title" id="illusion2Tab"><a href="#illusion2" aria-selected="false">T-Illusion</a></li>
 			</ul>
 
 			<div class="tabs-content" data-tabs-content="projectTabs">
 				<div class="tabs-panel is-active" id="home">
-					<p>Tyler Kickham, home page</p>
+					<div class="row">
+						<div class="small-2 columns">
+							<img src="imgs/profile.jpg" id="profilePic">
+						</div>
+						<div class="small-10 columns">
+							<h4>Tyler Kickham</h4>
+							<p>Computer Science Senior Seminar homepage</p>
+							<p>Navigate projects with tabs above.  SAM and T-Illusion are part of Vis1.</p>
+							<a href="https://github.com/tkicks/comp401/tree/master/www">Source</a>
+						</div>
+					</div>
 				</div>
 				<div class="tabs-panel" id="illusion1">
 					<div class="row" id="description">
@@ -54,11 +64,22 @@
 					</div>
 				</div>
 				<div class="tabs-panel" id="illusion2">
-					<canvas id="illusion1Canvas"></canvas>
-					<div class="small-12 small-centered columns">
+					<div class="row" id="description">
+						<div class="small-7 columns">
+							<canvas id="illusion2Canvas"></canvas>
+						</div>
+						<div class="small-5 columns">
+							<h4 id="descTitle">T-Illusion</h4>
+							<p>This illusion allows for user interaction.  The user will drag the top of the vertical line to make it the same length they estimate the horizontal line at the bottom to be.</p>
+							<p>Click the "Guess" button to see if you correctly estimated the length of the horizontal line</p>
+							<p>Click the "Reset Illusion" button to reset the illusion.</p>
+						</div>
+					</div>
+
+					<div class="small-10 small-centered columns">
 						<form>
-							<input type="button" value="Prove Illusion" onclick="fadeOutGrid()">
-							<input type="button" value="Reset Illusion" onclick="fadeInGrid()">
+							<input type="button" value="Guess" onclick="guessT()">
+							<input type="button" value="Reset Illusion" onclick="resetT()">
 						</form>
 					</div>
 				</div>
