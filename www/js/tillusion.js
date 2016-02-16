@@ -11,10 +11,9 @@ function proveT() {
 	var vertLen = getLength(bar, "y1", "y2", "vert");
 	bar = $('#horizontal');
 	var zontLen = getLength(bar, "x1", "x2", "zont");
+	checkSame(vertLen, zontLen);
 
 	prove();
-
-	checkSame(vertLen, zontLen);
 }
 
 function getLength(bar, coord1, coord2, whichBar) {
@@ -27,13 +26,10 @@ function getLength(bar, coord1, coord2, whichBar) {
 	startBar = startBar/100;								// account for percentage height/width
 	endBar = endBar/100;
 	
-	if (whichBar === "vert") {
+	if (whichBar === "vert")
 		barLength = startBar*canvasHeight - endBar*canvasHeight;	// length of vertical bar
-		// bar.attr("transform", "rotate(30)");
-	}
-	else {
+	else
 		barLength = endBar*canvasWidth - startBar*canvasWidth;		// length of horizontal bar
-	}
 
 	return barLength;
 }
@@ -62,10 +58,14 @@ function prove() {
 		"fill": 'freeze'
 	}, 1000 );
 	bar.attr("transform", "rotate(90, 200, 200)");
-	bar.attr("x1", "95%");
-	bar.attr("x2", "95%");
-	bar.attr("y1", "10%");
-	bar.attr("y2", "90%");
+	// bar.attr("x1", "95%");
+	// bar.attr("x2", "95%");
+	// bar.attr("y1", "10%");
+	// bar.attr("y2", "90%");
+	var newY = 0;
+	do {
+		newY = moveDown(bar, 5);
+	} while (newY > 15);
 
 	// var bar = $('#vertical');
 	// bar.attr("transform", "rotate(90, 200, 200)");
@@ -81,6 +81,16 @@ function prove() {
 
 
 	// $('#vertical').attr("transform: 'rotate(90, 200, 200)'");
+}
+
+function moveDown(bar, percent) {
+	console.log("moving down");
+	var downBy = parseFloat(bar.attr("y1"));
+	var newY = downBy - percent;
+	bar.attr("y1", downBy);
+	bar.attr("y2", "90%");
+
+	return newY;
 }
 
 function resetT() {
