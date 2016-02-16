@@ -3,10 +3,6 @@ function tTab() {
 }
 
 function proveT() {
-	// draw thinner (than original object) brown line through
-	// vertical line then call animation to rotate it and place
-	// overlaying horizontal line to see if it's the same size
-	// get guess info
 	var bar = $('#vertical');
 	var vertLen = getLength(bar, "y1", "y2", "vert");
 	bar = $('#horizontal');
@@ -49,66 +45,60 @@ function prove() {
 	var width = parseFloat(canvas.attr("width"));
 	var startY = parseFloat(bar.attr("y1"));
 	var endY = parseFloat(bar.attr("y2"));
-	bar.attr("stroke", "yellow");
 	bar.animate({
 		"stroke-width": '5px',
-		"top": "+=950",
-		"x1": '95%',
-		"x2": '95%',
-		"fill": 'freeze'
 	}, 1000 );
 	bar.attr("transform", "rotate(90, 200, 200)");
-	// bar.attr("x1", "95%");
-	// bar.attr("x2", "95%");
-	// bar.attr("y1", "10%");
-	// bar.attr("y2", "90%");
-	var newY = 0;
-	do {
-		newY = moveDown(bar, 5);
-	} while (newY > 15);
 
-	// var bar = $('#vertical');
-	// bar.attr("transform", "rotate(90, 200, 200)");
-	// bar.attr("stroke", "green");
-	// bar.animate({
-	// 	"stroke-width": '5px',
-	// 	"top": "+=950",
-	// 	"x1": '95%',
-	// 	"x2": '95%',
-	// 	"fill": 'freeze'
-	// }, 1000 );
-
-
-
-	// $('#vertical').attr("transform: 'rotate(90, 200, 200)'");
+	window.setTimeout(moveDown, 500);
 }
 
-function moveDown(bar, percent) {
-	console.log("moving down");
-	var downBy = parseFloat(bar.attr("y1"));
-	var newY = downBy - percent;
-	bar.attr("y1", downBy);
-	bar.attr("y2", "90%");
+function moveDown() {
+	var moving = setInterval(function() {
+		var bar = $('#vertical');
+		var percent = 5;
+		var downBy = parseFloat(bar.attr("x1"));
+		var newY = downBy + percent;
+		bar.attr("x1", newY + "%");
+		bar.attr("x2", newY + "%");
+		if (parseFloat(bar.attr("x1")) === 95) {
+			clearInterval(moving);
+			moveRight();
+		}
+	}, 500);
+}
 
-	return newY;
+function moveRight() {
+	var moving = setInterval(function() {
+		var bar = $('#vertical');
+		var percent = 5;
+		var rightBy = parseFloat(bar.attr("y1"));
+		var right2By = parseFloat(bar.attr("y2"));
+		var newX1 = rightBy - percent;
+		var newX2 = right2By - percent;
+		bar.attr("y1", newX1 + "%");
+		bar.attr("y2", newX2 + "%");
+		console.log("y2 = " + parseFloat(bar.attr("y2")));
+		if (parseFloat(bar.attr("y2")) === 10) {
+			clearInterval(moving);
+			bar.attr("stroke", "orange");
+		}
+	}, 500);
 }
 
 function resetT() {
 	var resultSpace = $('#tResult');
 	resultSpace.empty();
 
-	var bar = $('#vertical')
+	var bar = $('#vertical');
+	bar.attr("transform", "rotate(0, 200, 200)");
 	bar.attr("stroke", "blue");
+	bar.attr("y1", "95%");
+	bar.attr("y2", "15%");
+	bar.attr("x1", "50%");
+	bar.attr("x2", "50%");
+
 	bar.animate({
 		"stroke-width": '10px',
-		"top": "-=950",
-		"x1": '50%',
-		"x2": '50%',
-		"fill": 'freeze'
 	}, 1000 );
-	// bar.attr("transform", "rotate(270, 200, 200)");
-	bar.attr("x1", "95%");
-	bar.attr("x2", "15%");
-	bar.attr("y1", "50%");
-	bar.attr("y2", "50%");
 }
