@@ -79,15 +79,14 @@
 							<p>This upside down T appears to have a longer vertical line than horizontal, however, they are the same length.</p>
 							<p>Click the "Prove" button to see that it fits the length of the horizontal line</p>
 							<p>Click the "Reset Illusion" button to reset the illusion.</p>
-							<p>(Do not click "Prove" more than once without resetting. Let animation finish before resetting. Failing to do either may cause infinite loop.)</p>
 							<p id="tResult"></p>
 						</div>
 					</div>
 
 					<div class="small-10 small-centered columns">
 						<form>
-							<input type="button" value="Prove" onclick="proveT()">
-							<input type="button" value="Reset Illusion" onclick="resetT()">
+							<input type="button" id="prove" value="Prove" onclick="proveT()">
+							<input type="button" id="reset" value="Reset Illusion" onclick="resetT()">
 						</form>
 					</div>
 				</div>

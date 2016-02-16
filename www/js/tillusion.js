@@ -3,16 +3,20 @@ function tTab() {
 }
 
 function proveT() {
-	var bar = $('#vertical');
-	var vertLen = getLength(bar, "y1", "y2", "vert");
-	bar = $('#horizontal');
-	var zontLen = getLength(bar, "x1", "x2", "zont");
-	checkSame(vertLen, zontLen);
+// if the prove button is pressed
+	var bar = $('#vertical');							// var for vertical line
+	var vertLen = getLength(bar, "y1", "y2", "vert");	// get length of vertical line
+	bar = $('#horizontal');								// var for horizontal line
+	var zontLen = getLength(bar, "x1", "x2", "zont");	// get length of horizontal line
+	checkSame(vertLen, zontLen);						// see if they are the same length
 
-	prove();
+	prove();											// prove that they are the same length
 }
 
 function getLength(bar, coord1, coord2, whichBar) {
+// INPUT: bar object, begin point, end point of line, which bar it is
+// OUTPUT: length of the bar passed in
+// get the length of the bar
 	var canvas = $('#svgCanvas');
 	var canvasHeight = parseFloat(canvas.attr("height"));	// parseFloat converts dimension string to number
 	var canvasWidth = parseFloat(canvas.attr("width"));		// parseFloat converts dimension string to number
@@ -27,78 +31,80 @@ function getLength(bar, coord1, coord2, whichBar) {
 	else
 		barLength = endBar*canvasWidth - startBar*canvasWidth;		// length of horizontal bar
 
-	return barLength;
+	return barLength;										// return the length of the bar
 }
 
 function checkSame(vertLen, zontLen) {
-	var resultSpace = $('#tResult');
-	if (vertLen === zontLen)
-		resultSpace.append("They are the same length");
-	else
-		resultSpace.append("They are not the same length");
+// check if the bars are the same length
+	var resultSpace = $('#tResult');						// where to append the result to
+	if (vertLen === zontLen)								// if they're the same length
+		resultSpace.append("They are the same length");		// say so
+	else													// otherwise
+		resultSpace.append("They are not the same length");	// say so
 }
 
 function prove() {
-	var bar = $('#vertical');
-	var canvas = $('#svgCanvas');
-	var height = parseFloat(canvas.attr("height"));
-	var width = parseFloat(canvas.attr("width"));
-	var startY = parseFloat(bar.attr("y1"));
-	var endY = parseFloat(bar.attr("y2"));
-	bar.animate({
-		"stroke-width": '5px',
-	}, 1000 );
-	bar.attr("transform", "rotate(90, 200, 200)");
+// prove they're the same length
+	$('#prove').attr('disabled', 'disabled');			// disable the buttons (stops possibility of infinite loop)
+	$('#reset').attr('disabled', 'disabled');			// disable the buttons (stops possibility of infinite loop)
+	var bar = $('#vertical');							// vertical line object
+	var canvas = $('#svgCanvas');						// canvas object
+	var height = parseFloat(canvas.attr("height"));		// get the canvas height
+	var width = parseFloat(canvas.attr("width"));		// get the canvas width
+	var startY = parseFloat(bar.attr("y1"));			// get the starting y coord
+	var endY = parseFloat(bar.attr("y2"));				// get the ending y coord
 
-	window.setTimeout(moveDown, 500);
+	bar.attr("transform", "rotate(90, 200, 200)");		// rotate the bar sideways
+	// this makes x vals be in y vars in svg elt below
+
+	window.setTimeout(moveDown, 500);					// wait half a second then start moving down
 }
 
 function moveDown() {
-	var moving = setInterval(function() {
-		var bar = $('#vertical');
-		var percent = 5;
-		var downBy = parseFloat(bar.attr("x1"));
-		var newY = downBy + percent;
-		bar.attr("x1", newY + "%");
-		bar.attr("x2", newY + "%");
-		if (parseFloat(bar.attr("x1")) === 95) {
-			clearInterval(moving);
-			moveRight();
+// move the vertical bar down towards the horizontal bar
+	var moving = setInterval(function() {				// set a half second interval between jumps
+		var bar = $('#vertical');						// vert bar object
+		var percent = 5;								// % to move down by
+		var downBy = parseFloat(bar.attr("x1"));		// get the current y val
+		var newY = downBy + percent;					// calculate new y val
+		bar.attr("x1", newY + "%");						// set the new y coords
+		bar.attr("x2", newY + "%");						// set the new y coords
+		if (parseFloat(bar.attr("x1")) === 90) {		// check if it's right above horizontal bar
+			clearInterval(moving);						// stop moving down
+			moveRight();								// move vert bar right over horizontal
 		}
 	}, 500);
 }
 
 function moveRight() {
-	var moving = setInterval(function() {
-		var bar = $('#vertical');
-		var percent = 5;
-		var rightBy = parseFloat(bar.attr("y1"));
-		var right2By = parseFloat(bar.attr("y2"));
-		var newX1 = rightBy - percent;
-		var newX2 = right2By - percent;
-		bar.attr("y1", newX1 + "%");
-		bar.attr("y2", newX2 + "%");
-		console.log("y2 = " + parseFloat(bar.attr("y2")));
-		if (parseFloat(bar.attr("y2")) === 10) {
-			clearInterval(moving);
-			bar.attr("stroke", "orange");
+// align the "vertical" bar with the "horizontal" bar
+	var moving = setInterval(function() {				// set a half second interval between jumps
+		var bar = $('#vertical');						// vert bar object
+		var percent = 5;								// % to move right by
+		var rightBy = parseFloat(bar.attr("y1"));		// get the current x1 val
+		var right2By = parseFloat(bar.attr("y2"));		// get the current x2 val
+		var newX1 = rightBy - percent;					// calculate new x1 val
+		var newX2 = right2By - percent;					// calculate new x2 val
+		bar.attr("y1", newX1 + "%");					// set the new x1 coords
+		bar.attr("y2", newX2 + "%");					// set the new x2 coords
+		if (parseFloat(bar.attr("y2")) === 10) {		// check if it's right above horizontal bar
+			clearInterval(moving);						// stop moving right
+			$('#reset').removeAttr('disabled');			// enable the reset button
 		}
 	}, 500);
 }
 
 function resetT() {
-	var resultSpace = $('#tResult');
-	resultSpace.empty();
+// reset the illusion
+	var resultSpace = $('#tResult');				//
+	resultSpace.empty();							// clear where it says it's the same length
 
-	var bar = $('#vertical');
-	bar.attr("transform", "rotate(0, 200, 200)");
-	bar.attr("stroke", "blue");
-	bar.attr("y1", "95%");
-	bar.attr("y2", "15%");
-	bar.attr("x1", "50%");
-	bar.attr("x2", "50%");
+	var bar = $('#vertical');						// vertical bar object
+	bar.attr("transform", "rotate(0, 200, 200)");	// rotate back vertically (reset xcoords to x and ycoords to y)
+	bar.attr("y1", "95%");							// reset x and y values to original
+	bar.attr("y2", "15%");							// reset x and y values to original
+	bar.attr("x1", "50%");							// reset x and y values to original
+	bar.attr("x2", "50%");							// reset x and y values to original
 
-	bar.animate({
-		"stroke-width": '10px',
-	}, 1000 );
+	$('#prove').removeAttr('disabled');				// enable prove button again
 }
