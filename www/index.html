@@ -9,6 +9,7 @@
 		<script src="js/dots.js"></script>
 		<script src="js/tillusion.js"></script>
 		<script src="js/index.js"></script>
+		<script src="js/sportsData.js"></script>
 	</head>
 
 	<body>
@@ -26,7 +27,7 @@
 				<li class="tabs-title is-active" id="homeTab"><a href="#home" aria-selected="true">Home</a></li>
 				<li class="tabs-title" id="illusion1Tab"><a href="#illusion1" aria-selected="false">SAM</a></li>
 				<li class="tabs-title" id="illusion2Tab"><a href="#illusion2" aria-selected="false">T-Illusion</a></li>
-				<li class="tabs-title" id="sportsData"><a href="#sportsData" aria-selected="false">Sports Data</a></li>
+				<li class="tabs-title" id="sportsData"><a href="#sportsDataTab" aria-selected="false">Sports Data</a></li>
 			</ul>
 
 			<div class="tabs-content" data-tabs-content="projectTabs">
@@ -91,29 +92,17 @@
 						</form>
 					</div>
 				</div>
-			</div>
-
-			<div class="tabs-panel" id="sportsData">
+				<div class="tabs-panel" id="sportsDataTab">
 					<div class="row" id="description">
-						<div class="small-7 columns">
-							<canvas id="illusion1Canvas"></canvas>
+						<div class="small-7 columns" id="sportsVis">
 						</div>
 						<div class="small-5 columns">
-							<h4 class="descTitle">Stroboscopic Alternative Motion</h4>
-							<p>This illusion portrays 2 dots seemingly traveling in either a vertical or horizontal pattern.  In actuality, the canvas is erased and two dots are drawn at a time, so each dot never leaves its corner.</p>
-							<p>Click the "Horizontal" button to force the dot to appear to be travelling horizontally.</p>
-							<p>Click the "Vertical" button to force the dot to appear to be travelling vertically.</p>
+							<h4 class="descTitle">Sports Data Visualization</h4>
+							<p>This visualization shows seven levels of data including: the team name, the player name, the player height, the player weight, the player batting average, the player on base percentage, and the number of homeruns.
 						</div>
 					</div>
-
-					<div class="small-10 small-centered columns">
-						<form>
-							<input type="button" value="Horizontal" onclick="toggleTopSAM()">
-							<input type="button" value="Vertical" onclick="toggleSideSAM()">
-							<input type="button" value="Reset Illusion" onclick="resetSAM()">
-						</form>
-					</div>
 				</div>
+			</div>
 		</div>
 
 

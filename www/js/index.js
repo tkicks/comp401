@@ -9,4 +9,7 @@ $(document).ready(function() {
 	$('#illusion2Tab').click(function() {
 		tTab();
 	})
+	$('#sportsData').click(function() {
+		sportsTab();
+	})
 })
