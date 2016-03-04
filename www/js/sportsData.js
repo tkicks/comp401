@@ -27,5 +27,5 @@ function myFunction(xml) {
     x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
     "</td></tr>";
   }
-  document.getElementById("CDtable").innerHTML = table;
+  document.getElementById("sportsVis").innerHTML = table;
 }
