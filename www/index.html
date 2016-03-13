@@ -6,6 +6,8 @@
 		<link rel="stylesheet" href="./css/foundation.css">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 		<script src="js/dots.js"></script>
 		<script src="js/tillusion.js"></script>
 		<script src="js/index.js"></script>
@@ -34,22 +36,23 @@
 				<div class="tabs-panel is-active" id="home">
 					<div class="row">
 						<div class="small-2 columns">
-							<img src="imgs/profile.jpg" id="profilePic">
+							<!-- <img src="imgs/profile.jpg" id="profilePic"> -->
 						</div>
 						<div class="small-10 columns">
 							<h4>Tyler Kickham</h4>
 							<p>Computer Science Senior Seminar homepage</p>
 							<p>Navigate projects with tabs above.  SAM and T-Illusion are part of Vis1.</p>
+							<p>Sports Data is Vis2</p>
 							<a href="https://github.com/tkicks/comp401/tree/master/www">Source</a>
 						</div>
 					</div>
 				</div>
 				<div class="tabs-panel" id="illusion1">
 					<div class="row" id="description">
-						<div class="small-7 columns">
+						<div class="small-7 large-9 columns">
 							<canvas id="illusion1Canvas"></canvas>
 						</div>
-						<div class="small-5 columns">
+						<div class="small-5 large-3 columns">
 							<h4 class="descTitle">Stroboscopic Alternative Motion</h4>
 							<p>This illusion portrays 2 dots seemingly traveling in either a vertical or horizontal pattern.  In actuality, the canvas is erased and two dots are drawn at a time, so each dot never leaves its corner.</p>
 							<p>Click the "Horizontal" button to force the dot to appear to be travelling horizontally.</p>
@@ -67,16 +70,16 @@
 				</div>
 				<div class="tabs-panel" id="illusion2">
 					<div class="row" id="description">
-						<div class="small-7 columns" id="getTWidth">
+						<div class="small-7 large-9 columns" id="getTWidth">
 							<svg id = "svgCanvas"
-     							width="400px"
-     							height="400px"
-     							xmlns="http://www.w3.org/2000/svg">
-     							<line id="horizontal" x1="10%" y1="95%" x2="90%" y2="95%" style="stroke-width: 10px" stroke="blue" />
-     							<line id="vertical" x1="50%" y1="95%" x2="50%" y2="15%" style="stroke-width: 10px" stroke="blue" />
-     						</svg>
+								width="400px"
+								height="400px"
+								xmlns="http://www.w3.org/2000/svg">
+								<line id="horizontal" x1="10%" y1="95%" x2="90%" y2="95%" style="stroke-width: 10px" stroke="blue" />
+								<line id="vertical" x1="50%" y1="95%" x2="50%" y2="15%" style="stroke-width: 10px" stroke="blue" />
+							</svg>
 						</div>
-						<div class="small-5 columns">
+						<div class="small-5 large-3 columns">
 							<h4 class="descTitle">T-Illusion</h4>
 							<p>This upside down T appears to have a longer vertical line than horizontal, however, they are the same length.</p>
 							<p>Click the "Prove" button to see that it fits the length of the horizontal line</p>
@@ -94,11 +97,27 @@
 				</div>
 				<div class="tabs-panel" id="sportsDataTab">
 					<div class="row" id="description">
-						<div class="small-7 columns" id="sportsVis">
+						<div class="small-7 large-9 columns" id = "svgSpot">
+							
 						</div>
-						<div class="small-5 columns">
+						<div class="small-5 large-3 columns">
 							<h4 class="descTitle">Sports Data Visualization</h4>
-							<p>This visualization shows seven levels of data including: the team name, the player name, the player height, the player weight, the player batting average, the player on base percentage, and the number of homeruns.
+							<p>Name: <span id="playerName"></span></p>
+							<p>Team: <span id="playerTeam"></span></p>
+							<p>Height: <span id="playerHeight"></span></p>
+							<p>Weight: <span id="playerWeight"></span></p>
+							<p>Average: <span id="playerAverage"></span></p>
+							<p>On base %: <span id="playerOBP"></span></p>
+							<p>Home runs: <span id="playerHr"></span></p>
+							<br />
+							<p>Mouseover doesn't work yet.</p>
+							<p>X value: average</p>
+							<p>Y value: home runs</p>
+							<p>Ellipse width: weight</p>
+							<p>Ellipse height: height</p>
+							<p>Color: on base percentage</p>
+							<p style="text-indent: 30px;">Worst to Best:</p>
+							<p style="text-indent: 50px;">Red, Orange, Blue, Green, Yellow, Black, White, Purple, Cyan, Aqua</p>
 						</div>
 					</div>
 				</div>

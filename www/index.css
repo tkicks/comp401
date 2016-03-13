@@ -1,0 +1,109 @@
+body {
+	padding: 0;
+	margin: 0;
+	font-family: "proxima-nova", garamond, "sans-serif";
+	color: #4a4a4a;
+}
+
+.body_wrapper {
+	margin-left: 25%;
+	margin-right: 25%;
+	display: inline-block;
+}
+
+/*.secondwrapper {
+	display: flex;
+}*/
+
+.left_side {
+	position: absolute;
+	float: left;
+	margin-right: 51%;
+}
+
+.right_side {
+	position: relative;
+	float: right;
+	margin-left: 51%;
+}
+
+#banner {
+	max-height: 20.5em;
+	width: 100%;
+	overflow: hidden;
+	display: inline-block;
+}
+
+#bannerImage {
+	position: relative;
+	top: -310px;
+	float: left;
+	height: 100%;
+	width: 100%;
+}
+
+#logoImage {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	float: left;
+}
+
+#bannerText {
+	position: absolute;
+	padding-right: 100px;
+	text-align: right;
+	word-spacing: 1em;
+	width: inherit;
+	padding-top: 50px;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+#nospace {
+	word-spacing: 0em;
+}
+
+#nospaceborder {
+	word-spacing: 0em;
+	border-style: solid;
+	border-color: #fff; 
+}
+
+#bodyTitle {
+	padding-top: 75px;
+	text-transform: uppercase;
+	font-size: 22px;
+	color: #4a4a4a;
+	letter-spacing: 2px;
+}
+
+#storyTitle {
+	text-align: center;
+	font-size: 32px;
+	font-family: garamond;
+}
+
+#intro {
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+#quote {
+	margin-left: 40px;
+}
+
+#text {
+	line-height: 1.6em;
+}
+
+#link {
+	text-decoration: none;
+	color: #3d9991;
+}
+
+#founderImage {
+	display: inline-block;
+	float: right;
+}
